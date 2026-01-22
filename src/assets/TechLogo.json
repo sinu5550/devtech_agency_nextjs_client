@@ -1,0 +1,14 @@
+[
+  { "name": "React", "src": "/assets/images/react-icon.png" },
+  {
+    "name": "Firebase",
+    "src": "/assets/images/Tailwind_CSS_logo_with_dark_text.svg"
+  },
+  { "name": "Firebase", "src": "/assets/images/New_Firebase_logo.svg" },
+  { "name": "Figma", "src": "/assets/images/figma-5.svg" },
+  { "name": "MongoDB", "src": "/assets/images/mongodb.svg" },
+  { "name": "MongoDB", "src": "/assets/images/django-logo-positive.svg" },
+  { "name": "NextJS", "src": "/assets/images/pngwing.com.png" },
+  { "name": "HTML", "src": "/assets/images/html5.png" },
+  { "name": "CSS", "src": "/assets/images/css.svg" }
+]
