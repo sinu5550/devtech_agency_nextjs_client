@@ -39,7 +39,7 @@ const LogoTicker = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[120px] bg-primary/10 blur-[100px] pointer-events-none" />
       
       {/* Container with subtle glass line */}
-      <div className="relative border-y border-white/10 bg-white/[0.03] backdrop-blur-md px-4 overflow-hidden">
+      <div className="relative border-y border-border bg-white/[0.03] backdrop-blur-md px-4 overflow-hidden">
         <Marquee 
           gradient={true} 
           gradientColor={[3, 6, 23]} // Matches bg-[#030617]
@@ -61,7 +61,7 @@ const LogoTicker = () => {
               >
                 {logo.icon}
               </div>
-              <span className="ml-6 text-white text-lg md:text-xl font-bold uppercase tracking-widest opacity-30 group-hover:opacity-100 group-hover:glow-text-blue transition-all duration-500">
+              <span className="ml-6 text-foreground text-lg md:text-xl font-bold uppercase tracking-widest opacity-30 group-hover:opacity-100 group-hover:glow-text-blue transition-all duration-500">
                 {logo.name}
               </span>
             </div>

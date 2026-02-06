@@ -8,7 +8,7 @@ import About from "../components/sections/About";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#030617] overflow-x-clip">
+    <main className="min-h-screen bg-background overflow-x-clip">
       <div id="home">
         <Header />
       </div>

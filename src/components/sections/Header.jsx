@@ -69,13 +69,12 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="relative overflow-hidden bg-[#030617]">
-      <div className="bg-gradient-to-b from-blue-950/20 to-transparent">
+    <div className="relative overflow-hidden bg-background">
+      <div className="bg-gradient-to-b from-primary/10 to-transparent">
         <div className="h-[90px]"></div>
         <h1
           ref={logoRef}
-          className="logo-main font-bold tracking-wider text-[80px] md:text-[200px] hidden md:flex justify-center mt-12 mb-12 relative z-10 select-none pointer-events-none text-white glow-text-blue"
-          style={{ textShadow: "0 0 30px rgba(59, 130, 246, 0.3)" }}
+          className="logo-main font-bold tracking-wider text-[80px] md:text-[200px] hidden md:flex justify-center mt-12 mb-12 relative z-10 select-none pointer-events-none text-foreground glow-text-blue"
         >
           DevTech.
         </h1>

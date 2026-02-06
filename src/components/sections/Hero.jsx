@@ -24,7 +24,7 @@ const FloatingIcon = ({ icon: Icon, x, y, delay, color }) => (
     className="absolute hidden md:block"
     style={{ left: x, top: y, color }}
   >
-    <div className="p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl">
+    <div className="p-4 rounded-2xl bg-card/50 backdrop-blur-sm border border-border shadow-2xl">
       <Icon className="w-8 h-8" />
     </div>
   </motion.div>
@@ -67,7 +67,7 @@ const Hero = () => {
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-8xl font-black text-white leading-[1.1] tracking-tighter">
+          <h1 className="text-5xl md:text-8xl font-black text-foreground leading-[1.1] tracking-tighter">
             Unleash 
             <span className="mx-4 md:mx-6 inline-flex items-center justify-center w-14 h-14 md:w-24 md:h-24 bg-primary/10 rounded-3xl border border-primary/20 shadow-[0_0_50px_rgba(59,130,246,0.3)] group hover:scale-110 transition-transform duration-500 align-middle">
               <SendHorizonal className="w-7 h-7 md:w-12 md:h-12 text-primary drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]" />
@@ -80,7 +80,7 @@ const Hero = () => {
             SEO Solutions
           </h1>
 
-          <p className="max-w-2xl text-slate-400 text-lg md:text-xl font-medium leading-relaxed mt-4">
+          <p className="max-w-2xl text-muted-foreground text-lg md:text-xl font-medium leading-relaxed mt-4">
             We build high-performance, immersive digital experiences that <br className="hidden md:block" />
             help professional businesses dominate their local and global markets.
           </p>
@@ -95,7 +95,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white px-8 md:px-12 py-6 md:py-9 text-lg md:text-xl font-bold shadow-2xl transition-all duration-300 cursor-pointer hover:bg-white/10 hover:border-white/20 uppercase tracking-widest"
+              className="rounded-full bg-card/50 backdrop-blur-md border border-border text-foreground px-8 md:px-12 py-6 md:py-9 text-lg md:text-xl font-bold shadow-2xl transition-all duration-300 cursor-pointer hover:bg-card/70 hover:border-border uppercase tracking-widest"
             >
               Our Portfolio
             </Button>
@@ -106,7 +106,7 @@ const Hero = () => {
         <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="mt-32 flex flex-col items-center gap-4 text-slate-500"
+          className="mt-32 flex flex-col items-center gap-4 text-muted-foreground"
         >
           <span className="text-[10px] uppercase tracking-[0.4em] font-bold">Explore Our World</span>
           <div className="w-px h-16 bg-gradient-to-b from-primary/50 to-transparent" />

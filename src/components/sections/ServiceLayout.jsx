@@ -125,13 +125,13 @@ const ServiceLayout = () => {
   ];
 
   return (
-    <section id="services" className="relative bg-[#030617] pt-32 pb-20 px-4 overflow-visible">
+    <section id="services" className="relative bg-background pt-32 pb-20 px-4 overflow-visible">
       <div className="container mx-auto max-w-7xl">
         <div className="mb-32 text-center">
           <Badge variant="outline" className="mb-6 px-8 py-2.5 text-primary border-primary/30 glow-blue bg-primary/10 uppercase tracking-[0.5em] text-[11px] font-black">
             Our Solutions
           </Badge>
-          <h2 className="text-6xl md:text-9xl font-black text-white tracking-tighter mb-10 leading-[0.9]">
+          <h2 className="text-6xl md:text-9xl font-black text-foreground tracking-tighter mb-10 leading-[0.9]">
             High-Impact <br />
             <span className="text-primary glow-text-blue">Expertise.</span>
           </h2>
