@@ -4,6 +4,7 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import ScrollToTop from "../components/layout/ScrollToTop";
 import { ThemeProvider } from "../components/ThemeProvider";
+import FloatingContact from "@/components/shared/FloatingContact";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
           <Footer />
+          <FloatingContact />
         </ThemeProvider>
       </body>
     </html>
