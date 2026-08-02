@@ -45,7 +45,7 @@ export default function DesignPhilosophy() {
               </span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-foreground leading-[1.1]">
+            <h2 className="text-5xl sm:text-6xl font-black tracking-tight text-foreground leading-[1.1]">
               Beyond Just <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-primary via-primary/80 to-foreground/60 bg-clip-text text-transparent">
                 Code.

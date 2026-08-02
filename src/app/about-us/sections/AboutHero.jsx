@@ -26,13 +26,16 @@ export default function AboutHero() {
 
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-10 lg:mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-2">
             <Sparkles size={14} />
             <span>Meet The Masterminds</span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight glow-text-blue">
-            DevTech Team
+          <h1 className="text-5xl sm:text-7xl font-black tracking-tight text-foreground leading-tight">
+            DevTech{" "}
+            <span className="bg-linear-to-r from-primary via-primary/80 to-foreground/60 bg-clip-text text-transparent">
+              Team
+            </span>
           </h1>
           <p className="text-muted-foreground mt-1 text-sm md:text-base">
             Build Website with self Design — Click any member to reveal details.
@@ -74,13 +77,8 @@ export default function AboutHero() {
 
                 {/* Section 01: Academic Credentials */}
                 <div className="space-y-4 relative z-10">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono uppercase tracking-[0.2em] font-extrabold text-primary">
-                      01
-                    </span>
-                    <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground font-semibold">
-                      Academic Credentials
-                    </span>
+                  <div className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                    Academic Credentials
                   </div>
 
                   <div className="p-4 rounded-2xl bg-secondary/30 border border-border/40 backdrop-blur-sm space-y-3 shadow-inner">
@@ -120,13 +118,8 @@ export default function AboutHero() {
 
                 {/* Section 02: Technical Expertise Pills */}
                 <div className="space-y-4 relative z-10">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono uppercase tracking-[0.2em] font-extrabold text-primary">
-                      02
-                    </span>
-                    <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground font-semibold">
-                      Tech Stack & Core
-                    </span>
+                  <div className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                    Tech Stack & Core
                   </div>
 
                   <div className="flex flex-wrap gap-2">
@@ -143,13 +136,8 @@ export default function AboutHero() {
 
                 {/* Section 03: Social Connect Profiles */}
                 <div className="pt-2 space-y-4 relative z-10">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono uppercase tracking-[0.2em] font-extrabold text-primary">
-                      03
-                    </span>
-                    <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground font-semibold">
-                      Connect Profiles
-                    </span>
+                  <div className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                    Connect Profiles
                   </div>
 
                   <div className="flex flex-wrap items-center gap-3">
@@ -227,7 +215,7 @@ export default function AboutHero() {
                   <motion.div
                     key={member.id}
                     className={`relative cursor-pointer transition-all duration-500 ${
-                      isEven ? "mt-4 lg:mt-5 " : "mb-4 lg:mb-5"
+                      isEven ? "mt-4 md:mt-5 " : "mb-4 md:mb-5"
                     }`}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
@@ -248,7 +236,7 @@ export default function AboutHero() {
                       />
 
                       {/* Glassmorphic Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-3">
+                      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-3">
                         <p className="text-white font-bold text-sm leading-tight glow-text-blue">
                           {member.name}
                         </p>

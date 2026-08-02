@@ -78,7 +78,7 @@ export default function TechArsenal() {
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-foreground leading-tight">
+          <h2 className="text-5xl sm:text-7xl font-black tracking-tight text-foreground leading-tight">
             Tech{" "}
             <span className="bg-gradient-to-r from-primary via-primary/80 to-foreground/60 bg-clip-text text-transparent">
               Arsenal.

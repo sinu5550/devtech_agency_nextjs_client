@@ -2,7 +2,6 @@ import React from "react";
 import AboutHero from "./sections/AboutHero";
 import DesignPhilosophy from "./sections/DesignPhilosophy";
 import TechArsenal from "./sections/TechArsenal";
-import JourneyTimeline from "./sections/JourneyTimeline";
 
 export const metadata = {
   title: "About Us | DevTech",
@@ -16,7 +15,6 @@ export default function AboutPage() {
       <AboutHero />
       <DesignPhilosophy />
       <TechArsenal />
-      <JourneyTimeline />
     </main>
   );
 }
