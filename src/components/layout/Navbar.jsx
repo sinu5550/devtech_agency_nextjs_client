@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
 import { ThemeToggle } from "../ui/ThemeToggle";
 
 if (typeof window !== "undefined") {
@@ -59,10 +58,26 @@ const Navbar = () => {
         trigger: "body",
         start: "top+=180 top",
         onEnter: () => {
-          nav.classList.add("bg-black/40", "dark:bg-black/40", "bg-white/60", "backdrop-blur-md", "border-b", "border-border", "shadow-lg");
+          nav.classList.add(
+            "bg-black/40",
+            "dark:bg-black/40",
+            "bg-white/60",
+            "backdrop-blur-md",
+            "border-b",
+            "border-border",
+            "shadow-lg",
+          );
         },
         onLeaveBack: () => {
-          nav.classList.remove("bg-black/40", "dark:bg-black/40", "bg-white/60", "backdrop-blur-md", "border-b", "border-border", "shadow-lg");
+          nav.classList.remove(
+            "bg-black/40",
+            "dark:bg-black/40",
+            "bg-white/60",
+            "backdrop-blur-md",
+            "border-b",
+            "border-border",
+            "shadow-lg",
+          );
         },
       });
 
@@ -85,7 +100,7 @@ const Navbar = () => {
           "backdrop-blur-xl",
           "border",
           "border-white/10",
-          "glow-blue"
+          "glow-blue",
         );
         nav.style.transform = ""; // reset transform
       });
@@ -104,7 +119,7 @@ const Navbar = () => {
             "backdrop-blur-xl",
             "border",
             "border-border",
-            "glow-blue"
+            "glow-blue",
           );
           containerAnim.reverse();
         },
@@ -133,6 +148,9 @@ const Navbar = () => {
     }
   };
 
+  // Pages without this navbar
+  if (pathname == "/about-us") return;
+
   return (
     <div ref={extraDiv}>
       <div
@@ -152,10 +170,30 @@ const Navbar = () => {
               ref={menuItemsRef}
               className="ml-[-100px] hidden md:flex items-center w-max py-3 px-8 bg-card/50 dark:bg-white/5 border border-border backdrop-blur-md gap-12 rounded-full font-semibold text-foreground/80"
             >
-              <button className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all" onClick={() => handleScroll("services")}>Services</button>
-              <button className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all" onClick={() => handleScroll("expertise")}>Expertise</button>
-              <button className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all" onClick={() => handleScroll("about")}>About</button>
-              <button className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all" onClick={() => handleScroll("footer")}>Contact</button>
+              <button
+                className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all"
+                onClick={() => handleScroll("services")}
+              >
+                Services
+              </button>
+              <button
+                className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all"
+                onClick={() => handleScroll("expertise")}
+              >
+                Expertise
+              </button>
+              <button
+                className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all"
+                onClick={() => handleScroll("about")}
+              >
+                About
+              </button>
+              <button
+                className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all"
+                onClick={() => handleScroll("footer")}
+              >
+                Contact
+              </button>
             </nav>
           </div>
 
@@ -164,17 +202,17 @@ const Navbar = () => {
             <div className="hidden md:block">
               <ThemeToggle />
             </div>
-            
-            <button 
+
+            <button
               onClick={() => handleScroll("footer")}
               className="hidden md:flex group py-3 px-6 bg-primary text-white rounded-full font-bold items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(59,130,246,0.5)] border border-primary/50"
             >
-              Get a Quote 
+              Get a Quote
               <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
             </button>
 
             {/* Mobile Menu Button */}
-            <button 
+            <button
               className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(true)}
             >
@@ -185,38 +223,75 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Side Menu Overlay */}
-      <div className={`fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} onClick={() => setIsMenuOpen(false)} />
-      
+      <div
+        className={`fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        onClick={() => setIsMenuOpen(false)}
+      />
+
       {/* Side Menu Panel */}
-      <div className={`fixed top-0 right-0 bottom-0 z-[70] w-[80%] max-w-sm bg-background border-l border-border shadow-2xl transition-transform duration-300 md:hidden ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
+      <div
+        className={`fixed top-0 right-0 bottom-0 z-[70] w-[80%] max-w-sm bg-background border-l border-border shadow-2xl transition-transform duration-300 md:hidden ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+      >
         <div className="flex flex-col h-full p-6">
           <div className="flex justify-between items-center mb-10">
-            <span className="font-bold text-xl text-foreground glow-text-blue">Menu</span>
-            <button onClick={() => setIsMenuOpen(false)} className="p-2 text-muted-foreground hover:text-foreground">
+            <span className="font-bold text-xl text-foreground glow-text-blue">
+              Menu
+            </span>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="p-2 text-muted-foreground hover:text-foreground"
+            >
               <X className="w-6 h-6" />
             </button>
           </div>
 
           <nav className="flex flex-col gap-6 text-lg font-bold">
-            <button className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border" onClick={() => handleScroll("home")}>Home</button>
-            <button className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border" onClick={() => handleScroll("services")}>Services</button>
-            <button className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border" onClick={() => handleScroll("expertise")}>Expertise</button>
-            <button className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border" onClick={() => handleScroll("about")}>About</button>
-            <button className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border" onClick={() => handleScroll("footer")}>Contact</button>
+            <button
+              className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border"
+              onClick={() => handleScroll("home")}
+            >
+              Home
+            </button>
+            <button
+              className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border"
+              onClick={() => handleScroll("services")}
+            >
+              Services
+            </button>
+            <button
+              className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border"
+              onClick={() => handleScroll("expertise")}
+            >
+              Expertise
+            </button>
+            <button
+              className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border"
+              onClick={() => handleScroll("about")}
+            >
+              About
+            </button>
+            <button
+              className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border"
+              onClick={() => handleScroll("footer")}
+            >
+              Contact
+            </button>
           </nav>
 
           <div className="mt-auto space-y-4">
             {/* Theme Toggle - Mobile */}
             <div className="flex items-center justify-between py-3 px-4 bg-secondary/50 rounded-xl border border-border">
-              <span className="text-sm font-semibold text-foreground">Theme</span>
+              <span className="text-sm font-semibold text-foreground">
+                Theme
+              </span>
               <ThemeToggle />
             </div>
-            
-             <button 
+
+            <button
               onClick={() => handleScroll("footer")}
               className="w-full py-4 bg-primary text-white rounded-xl font-bold flex justify-center items-center gap-2 shadow-[0_0_20px_rgba(59,130,246,0.3)] border border-primary/50 active:scale-95 transition-transform"
             >
-              Get a Quote 
+              Get a Quote
               <FaArrowRight />
             </button>
           </div>
