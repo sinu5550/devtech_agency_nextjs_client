@@ -63,7 +63,7 @@ export const teamData = [
     id: 4,
     name: "Farhatul Islam",
     role: "UI/UX & Logo Designer",
-    skills: ["Adobe Illustrator", "Photoshop", "Figma", "Canva"],
+    skills: ["Adobe Illustrator", "Adobe Photoshop", "Figma", "Canva"],
     links: {
       linkedin: "https://www.linkedin.com/in/farhatul-islam-016477186/",
       github: "",
