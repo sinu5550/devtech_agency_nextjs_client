@@ -20,6 +20,23 @@ export const teamData = [
   },
   {
     id: 2,
+    name: "Rumaiya Islam Sadiya",
+    role: "FrontEnd Developer",
+    skills: ["MERN"],
+    links: {
+      linkedin: "https://www.linkedin.com/in/rumaiya5550/",
+      github: "",
+      portfolio: "",
+    },
+    education: {
+      institution: "American International University Bangladesh",
+      subject: "BSc in Computer Science & Engineering (Graduated)",
+      cgpa: "",
+    },
+    image: "/assets/images/team-members/rumaiya.jpg",
+  },
+  {
+    id: 3,
     name: "Tanvir Mahmud Fuad",
     role: "Full-Stack Developer",
     skills: [
@@ -43,26 +60,9 @@ export const teamData = [
     image: "/assets/images/team-members/fuad.webp",
   },
   {
-    id: 3,
-    name: "Rumaiya Islam Sadiya",
-    role: "FrontEnd Developer",
-    skills: ["MERN"],
-    links: {
-      linkedin: "https://www.linkedin.com/in/rumaiya5550/",
-      github: "",
-      portfolio: "",
-    },
-    education: {
-      institution: "American International University Bangladesh",
-      subject: "BSc in Computer Science & Engineering (Graduated)",
-      cgpa: "",
-    },
-    image: "/assets/images/team-members/rumaiya.jpg",
-  },
-  {
     id: 4,
     name: "Farhatul Islam",
-    role: "UI/UX Designer",
+    role: "UI/UX & Logo Designer",
     skills: ["Adobe Illustrator", "Photoshop", "Figma", "Canva"],
     links: {
       linkedin: "https://www.linkedin.com/in/farhatul-islam-016477186/",

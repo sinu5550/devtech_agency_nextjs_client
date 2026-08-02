@@ -40,9 +40,9 @@ export default function AboutHero() {
         </div>
 
         {/* Main Split Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-center">
+        <div className="flex flex-col-reverse lg:flex-row w-full gap-8 items-center justify-center">
           {/* ================= LEFT SIDE: Active Member Details ================= */}
-          <div className="lg:col-span-7 w-full">
+          <div className="lg:w-7/12 w-full">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeMember.id}
@@ -217,7 +217,7 @@ export default function AboutHero() {
           </div>
 
           {/* ================= RIGHT SIDE: Compact 2-Column Staggered Grid ================= */}
-          <div className="lg:col-span-5 w-full">
+          <div className="lg:w-5/12 w-full">
             <div className="grid grid-cols-2 gap-x-4 md:gap-x-5 items-center">
               {teamData.map((member, index) => {
                 const isActive = activeMemberId === member.id;
@@ -227,14 +227,14 @@ export default function AboutHero() {
                   <motion.div
                     key={member.id}
                     className={`relative cursor-pointer transition-all duration-500 ${
-                      isEven ? "mt-4 lg:mt-5" : "mb-4 lg:mb-5"
+                      isEven ? "mt-4 lg:mt-5 " : "mb-4 lg:mb-5"
                     }`}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => setActiveMemberId(member.id)}
                   >
                     <div
-                      className={`relative group aspect-4/5 max-h-[180px] md:max-h-[500px] rounded-2xl overflow-hidden border-2 transition-all duration-500 ${
+                      className={`mx-auto relative group  max-h-45 md:max-h-125 rounded-2xl overflow-hidden border-2 transition-all duration-500 ${
                         isActive
                           ? "border-primary glow-blue shadow-[0_0_25px_rgba(59,130,246,0.5)] scale-[1.02] z-10"
                           : "border-transparent grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:border-border"
@@ -244,7 +244,7 @@ export default function AboutHero() {
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="w-full h-full aspect-5/5  md:aspect-4/5 object-cover transition-transform duration-700 group-hover:scale-110"
                       />
 
                       {/* Glassmorphic Overlay */}
