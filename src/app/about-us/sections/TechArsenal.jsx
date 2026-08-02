@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   Wrench,
   Terminal,
+  Palette,
 } from "lucide-react";
 
 const techCategories = [
@@ -40,6 +41,12 @@ const techCategories = [
     index: "05",
     icon: <Wrench className="text-primary w-5 h-5" />,
     skills: ["Docker", "AWS", "Git", "GitHub Actions"],
+  },
+  {
+    title: "UI/UX & Design",
+    index: "06",
+    icon: <Palette className="text-primary w-5 h-5" />,
+    skills: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "Canva"],
   },
 ];
 

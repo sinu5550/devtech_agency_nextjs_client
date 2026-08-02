@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import {
@@ -15,7 +15,21 @@ import {
 import { teamData } from "../../../../data/teamData";
 
 export default function AboutHero() {
-  const [activeMemberId, setActiveMemberId] = useState(teamData[0].id);
+  const [activeMemberId, setActiveMemberId] = useState(teamData[0]?.id);
+
+  // Auto-switch Active Member every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveMemberId((prevId) => {
+        const currentIndex = teamData.findIndex((m) => m.id === prevId);
+        const nextIndex = (currentIndex + 1) % teamData.length;
+        return teamData[nextIndex].id;
+      });
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const activeMember = teamData.find((member) => member.id === activeMemberId);
 
   return (
@@ -38,7 +52,8 @@ export default function AboutHero() {
             </span>
           </h1>
           <p className="text-muted-foreground mt-1 text-sm md:text-base">
-            Build Website with self Design — Click any member to reveal details.
+            Build Website with self Design — Click any member or sit back to
+            watch.
           </p>
         </div>
 
@@ -217,7 +232,7 @@ export default function AboutHero() {
 
           {/* ================= RIGHT SIDE: Compact 2-Column Staggered Grid ================= */}
           <div className="lg:w-5/12 w-full">
-            <div className="grid grid-cols-2 gap-x-4 md:gap-x-5 items-center">
+            <div className="grid grid-cols-2 gap-x-5 md:gap-x-7 items-center">
               {teamData.map((member, index) => {
                 const isActive = activeMemberId === member.id;
                 const isEven = index % 2 === 1;
@@ -226,14 +241,14 @@ export default function AboutHero() {
                   <motion.div
                     key={member.id}
                     className={`relative cursor-pointer transition-all duration-500 ${
-                      isEven ? "mt-4 md:mt-5 " : "mb-4 md:mb-5"
+                      isEven ? "mt-5 md:mt-7" : "mb-5 md:mb-7"
                     }`}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => setActiveMemberId(member.id)}
                   >
                     <div
-                      className={`mx-auto relative group  max-h-45 md:max-h-125 rounded-2xl overflow-hidden border-2 transition-all duration-500 ${
+                      className={`mx-auto relative group max-h-45 md:max-h-125 rounded-2xl overflow-hidden border-2 transition-all duration-500 ${
                         isActive
                           ? "border-primary glow-blue shadow-[0_0_25px_rgba(59,130,246,0.5)] scale-[1.02] z-10"
                           : "border-transparent grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:border-border"
@@ -243,7 +258,7 @@ export default function AboutHero() {
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-full aspect-5/5  md:aspect-4/5 object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="w-full h-full aspect-5/5 md:aspect-4/5 object-cover transition-transform duration-700 group-hover:scale-110"
                       />
 
                       {/* Glassmorphic Overlay */}
