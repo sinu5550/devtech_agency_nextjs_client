@@ -4,6 +4,7 @@ export const teamData = [
   {
     id: 1,
     name: "Intisar Ahmed Siyan",
+    position: "CEO",
     role: "Full-Stack Developer",
     skills: ["MERN", "Next.js", "TypeScript", "Django", "MongoDB", "Prisma"],
     links: {
