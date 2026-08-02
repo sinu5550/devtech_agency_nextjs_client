@@ -84,52 +84,65 @@ const ToolSection = () => {
   ];
 
   return (
-    <div id="expertise" className="bg-background py-20 md:py-32 px-4 relative overflow-hidden bg-grid-white">
+    <div
+      id="expertise"
+      className="bg-background py-20 md:py-32 px-4 relative overflow-hidden bg-grid-white"
+    >
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 px-4 py-1 text-primary border-primary/30 glow-blue bg-primary/5 uppercase tracking-widest text-[10px] font-black">
+          <Badge
+            variant="outline"
+            className="mb-4 px-4 py-1 text-primary border-primary/30 glow-blue bg-primary/5 uppercase tracking-widest text-[10px] font-black"
+          >
             Our Stack
           </Badge>
           <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tight mb-6">
-            Technologies We <span className="text-primary glow-text-blue">Master</span>
+            Technologies We{" "}
+            <span className="text-primary glow-text-blue">Master</span>
           </h2>
           <p className="text-muted-foreground font-medium text-lg max-w-2xl mx-auto leading-relaxed">
-            We use the industry's most advanced technologies to build <br className="hidden sm:block" /> robust and scalable digital products.
+            We use the industry's most advanced technologies to build{" "}
+            <br className="hidden sm:block" /> robust and scalable digital
+            products.
           </p>
         </div>
 
         {/* Optimized Segmented Control - Wrapped for Mobile */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">
-            {categories.map((category, index) => (
-              <button
-                key={category.name}
-                className={`relative z-10 flex items-center gap-2 px-5 py-3 rounded-xl transition-all duration-500 cursor-pointer ${
-                  activeTab === index ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                }`}
-                onClick={() => setActiveTab(index)}
+          {categories.map((category, index) => (
+            <button
+              key={category.name}
+              className={`relative z-10 flex items-center gap-2 px-5 py-3 rounded-xl transition-all duration-500 cursor-pointer ${
+                activeTab === index
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+              onClick={() => setActiveTab(index)}
+            >
+              {activeTab === index && (
+                <motion.div
+                  layoutId="activeTab"
+                  className="absolute inset-0 bg-primary border border-primary/30 shadow-lg rounded-xl z-[-1]"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <span
+                className={`transition-colors duration-500 ${activeTab === index ? "text-white" : "text-muted-foreground"}`}
               >
-                {activeTab === index && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute inset-0 bg-primary border border-primary/30 shadow-lg rounded-xl z-[-1]"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-                <span className={`transition-colors duration-500 ${activeTab === index ? "text-white" : "text-muted-foreground"}`}>
-                  {category.icon}
-                </span>
-                <span className="text-xs font-black uppercase tracking-widest whitespace-nowrap">
-                  {category.name}
-                </span>
-              </button>
-            ))}
+                {category.icon}
+              </span>
+              <span className="text-xs font-black uppercase tracking-widest whitespace-nowrap">
+                {category.name}
+              </span>
+            </button>
+          ))}
         </div>
 
         {/* Premium Skill Grid */}
-        <motion.div 
+        <motion.div
           layout
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 min-h-[400px]"
         >
@@ -144,7 +157,7 @@ const ToolSection = () => {
                 className="group relative flex flex-col items-center justify-center p-6 md:p-10 rounded-[1.5rem] md:rounded-[2rem] bg-card/50 backdrop-blur-2xl border border-border transition-all duration-500 hover:shadow-lg hover:border-primary/30 hover:-translate-y-3 cursor-pointer"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 rounded-[1.5rem] md:rounded-[2rem]" />
-                
+
                 <div className="relative w-16 h-16 md:w-20 md:h-20 mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]">
                   <Image
                     src={skill.icon}
@@ -153,11 +166,11 @@ const ToolSection = () => {
                     className="object-contain filter grayscale-0 md:grayscale md:group-hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
-                
+
                 <h3 className="relative z-10 text-xs font-black text-foreground uppercase tracking-[0.2em] text-center transition-all duration-300">
                   {skill.name}
                 </h3>
-                
+
                 {/* Decorative Elements */}
                 <div className="absolute top-4 right-4 text-[8px] font-black text-muted-foreground/30 md:group-hover:text-primary transition-colors uppercase tracking-widest">
                   Expertise
