@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground flex flex-col w-full overflow-hidden">
+    <main className="mt-20 min-h-screen bg-background text-foreground flex flex-col w-full overflow-hidden">
       <AboutHero />
       <DesignPhilosophy />
       <TechArsenal />
