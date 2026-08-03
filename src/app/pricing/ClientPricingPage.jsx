@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import PricingHero from "./sections/PricingHero";
 import PricingCards from "./sections/PricingCards";
+import PricingFAQ from "./sections/PricingFAQ";
 
 export default function ClientPricingPage() {
   const [isYearly, setIsYearly] = useState(false);
@@ -15,8 +16,7 @@ export default function ClientPricingPage() {
       <div className="max-w-7xl mx-auto w-full">
         <PricingHero isYearly={isYearly} setIsYearly={setIsYearly} />
         <PricingCards isYearly={isYearly} />
-        {/* <FeatureComparison /> */}
-        {/* <PricingFAQ />  */}
+        <PricingFAQ />
       </div>
     </main>
   );
