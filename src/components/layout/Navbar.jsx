@@ -149,7 +149,7 @@ const Navbar = () => {
   };
 
   // Pages without this navbar
-  const hiddenRoutes = ["/about-us", "/pricing"];
+  const hiddenRoutes = ["/about-us", "/pricing", "/our-services"];
   const hideNavbar = hiddenRoutes.includes(pathname);
   if (hideNavbar) return;
 

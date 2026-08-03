@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { teamData } from "@/data/teamData";
 import {
   Github,
   Linkedin,
@@ -12,7 +12,6 @@ import {
   Sparkles,
   ArrowUpRight,
 } from "lucide-react";
-import { teamData } from "../../../../data/teamData";
 
 export default function AboutHero() {
   const [activeMemberId, setActiveMemberId] = useState(teamData[0]?.id);
