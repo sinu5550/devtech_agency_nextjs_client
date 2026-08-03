@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { teamData } from "@/data/teamData";
 import {
   Github,
   Linkedin,
