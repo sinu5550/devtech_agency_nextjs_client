@@ -12,7 +12,7 @@ import {
   Sparkles,
   ArrowUpRight,
 } from "lucide-react";
-import { teamData } from "../../../../data/teamData";
+import { teamData } from "@/data/teamData";
 
 export default function AboutHero() {
   const [activeMemberId, setActiveMemberId] = useState(teamData[0]?.id);
