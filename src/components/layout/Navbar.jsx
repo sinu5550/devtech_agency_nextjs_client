@@ -149,7 +149,9 @@ const Navbar = () => {
   };
 
   // Pages without this navbar
-  if (pathname == "/about-us") return;
+  const hiddenRoutes = ["/about-us"];
+  const hideNavbar = hiddenRoutes.includes(pathname);
+  if (hideNavbar) return;
 
   return (
     <div ref={extraDiv}>
