@@ -4,7 +4,7 @@ import { Sparkles } from "lucide-react";
 
 export default function PricingHero({ isYearly, setIsYearly }) {
   return (
-    <div className="text-center max-w-3xl mx-auto mb-16">
+    <div className="text-center max-w-3xl mx-auto mb-20">
       {/* Badge */}
       <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-mono text-xs font-semibold mb-4">
         <Sparkles size={14} />
