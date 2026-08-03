@@ -1,7 +1,6 @@
 import ServicesHero from "./sections/ServicesHero";
 import ServicesList from "./sections/ServicesList";
-// import ProcessWorkflow from "@/components/ProcessWorkflow";
-// import ServicesCTA from "@/components/ServicesCTA";
+import ProcessWorkflow from "./sections/ProcessWorkflow";
 
 export const metadata = {
   title: "Our Services | DevTech",
@@ -20,7 +19,6 @@ export default function ServicesPage() {
         <ServicesHero />
         <ServicesList />
         {/* <ProcessWorkflow /> */}
-        {/* <ServicesCTA />  */}
       </div>
     </main>
   );
