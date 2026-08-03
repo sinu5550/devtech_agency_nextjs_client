@@ -57,17 +57,17 @@ const Navbar = () => {
       ScrollTrigger.create({
         trigger: "body",
         start: "top+=180 top",
-        onEnter: () => {
-          nav.classList.add(
-            "bg-black/40",
-            "dark:bg-black/40",
-            "bg-white/60",
-            "backdrop-blur-md",
-            "border-b",
-            "border-border",
-            "shadow-lg",
-          );
-        },
+        // onEnter: () => {
+        //   nav.classList.add(
+        //     "bg-black/40",
+        //     "dark:bg-black/40",
+        //     "bg-white/60",
+        //     "backdrop-blur-md",
+        //     "border-b",
+        //     "border-border",
+        //     "shadow-lg",
+        //   );
+        // },
         onLeaveBack: () => {
           nav.classList.remove(
             "bg-black/40",

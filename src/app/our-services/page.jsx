@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <div className="max-w-7xl mx-auto w-full">
         <ServicesHero />
         <ServicesList />
-        {/* <ProcessWorkflow /> */}
+        <ProcessWorkflow />
       </div>
     </main>
   );

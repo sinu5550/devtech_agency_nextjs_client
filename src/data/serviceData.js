@@ -79,4 +79,9 @@ export const processSteps = [
     title: "Cloud Deployment",
     desc: "Seamless deployment to production environments with Vercel, Docker, or AWS infrastructure.",
   },
+  {
+    step: "06",
+    title: "DevOps & Scaling",
+    desc: "Automated CI/CD pipelines, containerized environments, proactive monitoring, and scalable AWS infrastructure optimization.",
+  },
 ];
