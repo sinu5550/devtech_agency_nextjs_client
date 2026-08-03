@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
         >
           <ScrollToTop />
           <Navbar />
-          {children}
+          <main>{children}</main>
           <Footer />
           <FloatingContact />
         </ThemeProvider>
