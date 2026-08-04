@@ -85,18 +85,16 @@ export default function AboutHero() {
                   </div>
 
                   {/* Name & Eye-Catching Position Side-by-Side Wrapper */}
-                  <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex flex-col gap-3">
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-foreground leading-[1.15] bg-clip-text">
                       {activeMember.name}
                     </h2>
 
                     {/* Dynamic Eye-Catching Position Tag */}
-                    {activeMember.position && (
-                      <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-primary text-primary-foreground text-xs sm:text-sm font-black tracking-wider uppercase shadow-lg shadow-primary/30 border border-primary-foreground/20 hover:scale-105 transition-transform cursor-default">
-                        <span className="h-2 w-2 rounded-full bg-primary-foreground animate-pulse" />
-                        {activeMember.position}
-                      </span>
-                    )}
+                    <span className="w-fit inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-primary text-primary-foreground text-xs sm:text-sm font-black tracking-wider uppercase shadow-lg shadow-primary/30 border border-primary-foreground/20 hover:scale-105 transition-transform cursor-default">
+                      <span className="h-2 w-2 rounded-full bg-primary-foreground animate-pulse" />
+                      {activeMember.position}
+                    </span>
                   </div>
                 </div>
 
@@ -261,12 +259,12 @@ export default function AboutHero() {
                       />
 
                       {/* Glassmorphic Overlay */}
-                      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-3">
-                        <p className="text-white font-bold text-sm leading-tight glow-text-blue">
+                      <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent transition-all duration-300 flex flex-col justify-end p-3.5 md:p-4">
+                        <p className="text-white font-bold text-base md:text-lg leading-tight glow-text-blue">
                           {member.name}
                         </p>
-                        <p className="text-primary text-[11px] font-medium mt-0.5">
-                          {member.role}
+                        <p className="text-blue-400 text-xs md:text-sm font-semibold mt-1">
+                          {member.position}
                         </p>
                       </div>
                     </div>
