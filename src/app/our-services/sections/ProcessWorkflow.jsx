@@ -35,7 +35,7 @@ export default function ProcessWorkflow() {
               <div>
                 {/* Header: Step Number & Stage Tag */}
                 <div className="flex items-center justify-between mb-6 pb-4 border-b border-border">
-                  <span className="font-mono text-base font-bold text-orange-500 bg-secondary px-3 py-1 border border-border">
+                  <span className="font-mono text-base font-bold text-orange-500 bg-background dark:bg-secondary px-3 py-1 border border-border/80">
                     {step.step}
                   </span>
 

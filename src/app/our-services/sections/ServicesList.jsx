@@ -32,7 +32,7 @@ export default function ServicesList() {
             <div className="relative z-10 flex flex-col h-full">
               {/* Top Bar: Icon Box + Index */}
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-border">
-                <div className="w-12 h-12 border border-border bg-secondary flex items-center justify-center">
+                <div className="w-12 h-12 border border-border/80 bg-background dark:bg-secondary flex items-center justify-center">
                   {iconMap[service.iconName]}
                 </div>
                 <span className="font-mono text-xs font-bold text-muted-foreground">
@@ -61,7 +61,7 @@ export default function ServicesList() {
                   {service.features.map((feature, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center gap-2.5 p-2 bg-secondary border border-border font-mono text-xs text-foreground/90 rounded-none"
+                      className="flex items-center gap-2.5 p-2 bg-background dark:bg-secondary border border-border/80 font-mono text-xs text-foreground/90 rounded-none shadow-2xs"
                     >
                       <span className="text-orange-500 font-bold">✓</span>
                       <span className="font-medium text-xs">{feature}</span>
