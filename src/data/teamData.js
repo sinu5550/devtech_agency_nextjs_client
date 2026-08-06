@@ -4,7 +4,7 @@ export const teamData = [
   {
     id: 1,
     name: "Intisar Ahmed Siyan",
-    position: "CEO",
+    position: "Founder & Managing Director",
     role: "Full-Stack Developer",
     skills: ["MERN", "Next.js", "TypeScript", "Django", "MongoDB", "Prisma"],
     links: {
@@ -22,6 +22,7 @@ export const teamData = [
   {
     id: 2,
     name: "Rumaiya Islam Sadiya",
+    position: "Co-founder",
     role: "FrontEnd Developer",
     skills: ["MERN"],
     links: {
@@ -39,6 +40,7 @@ export const teamData = [
   {
     id: 3,
     name: "Tanvir Mahmud Fuad",
+    position: "Co-founder & Lead Developer",
     role: "Full-Stack Developer",
     skills: [
       "MERN",
@@ -63,6 +65,7 @@ export const teamData = [
   {
     id: 4,
     name: "Farhatul Islam",
+    position: "Lead Designer",
     role: "UI/UX & Logo Designer",
     skills: ["Adobe Illustrator", "Adobe Photoshop", "Figma", "Canva"],
     links: {

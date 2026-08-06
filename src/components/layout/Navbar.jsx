@@ -33,10 +33,13 @@ const Navbar = () => {
 
   useLayoutEffect(() => {
     if (typeof window === "undefined" || isMobile) return; // Skip animation on mobile
+    if (!fixedNavRef.current) return;
 
     const ctx = gsap.context(() => {
       // Initial state
-      gsap.set(logoSmallRef.current, { y: -50, opacity: 0 });
+      if (logoSmallRef.current) {
+        gsap.set(logoSmallRef.current, { y: -50, opacity: 0 });
+      }
 
       // === FIRST ANIMATION (logo + menu shift) ===
       const mainTL = gsap.timeline({
@@ -48,82 +51,37 @@ const Navbar = () => {
         },
       });
 
-      mainTL.to(logoSmallRef.current, { y: 0, opacity: 1, duration: 1 }, 0);
-      mainTL.to(menuItemsRef.current, { x: 100, duration: 1 }, 0);
-
-      const nav = fixedNavRef.current;
+      if (logoSmallRef.current) {
+        mainTL.to(logoSmallRef.current, { y: 0, opacity: 1, duration: 1 }, 0);
+      }
+      if (menuItemsRef.current) {
+        mainTL.to(menuItemsRef.current, { x: 100, duration: 1 }, 0);
+      }
 
       // === BACKGROUND APPEARS WHEN ANIMATION STARTS ===
-      ScrollTrigger.create({
-        trigger: "body",
-        start: "top+=180 top",
-        onEnter: () => {
-          nav.classList.add(
-            "bg-black/40",
-            "dark:bg-black/40",
-            "bg-white/60",
-            "backdrop-blur-md",
-            "border-b",
-            "border-border",
-            "shadow-lg",
-          );
-        },
-        onLeaveBack: () => {
-          nav.classList.remove(
-            "bg-black/40",
-            "dark:bg-black/40",
-            "bg-white/60",
-            "backdrop-blur-md",
-            "border-b",
-            "border-border",
-            "shadow-lg",
-          );
-        },
-      });
+      if (fixedNavRef.current) {
+        gsap.to(fixedNavRef.current, {
+          backgroundColor: "rgba(0, 0, 0, 0.4)",
+          backdropFilter: "blur(12px)",
+          borderBottomWidth: "1px",
+          scrollTrigger: {
+            trigger: "body",
+            start: "top+=180 top",
+            toggleActions: "play reverse play reverse",
+          },
+        });
 
-      const containerAnim = gsap.timeline({ paused: true });
-
-      containerAnim.to(nav, {
-        scaleX: 0.8,
-        borderRadius: "14px",
-        duration: 0.6,
-        ease: "power3.out",
-        transformOrigin: "center top",
-      });
-
-      containerAnim.call(() => {
-        nav.classList.add(
-          "container",
-          "mx-auto",
-          "mt-6",
-          "bg-white/5",
-          "backdrop-blur-xl",
-          "border",
-          "border-white/10",
-          "glow-blue",
-        );
-        nav.style.transform = ""; // reset transform
-      });
-
-      ScrollTrigger.create({
-        trigger: "body",
-        start: "top+=275 top",
-        onEnter: () => containerAnim.play(),
-        onLeaveBack: () => {
-          nav.classList.remove(
-            "container",
-            "mx-auto",
-            "mt-6",
-            "bg-card/80",
-            "dark:bg-white/5",
-            "backdrop-blur-xl",
-            "border",
-            "border-border",
-            "glow-blue",
-          );
-          containerAnim.reverse();
-        },
-      });
+        gsap.to(fixedNavRef.current, {
+          scaleX: 0.9,
+          borderRadius: "14px",
+          marginTop: "24px",
+          scrollTrigger: {
+            trigger: "body",
+            start: "top+=275 top",
+            toggleActions: "play reverse play reverse",
+          },
+        });
+      }
     }, fixedNavRef);
 
     return () => ctx.revert();
