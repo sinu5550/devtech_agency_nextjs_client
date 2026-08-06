@@ -13,8 +13,7 @@ const footerLinks = {
     { label: "Maintenance & Support", href: "/our-services" },
   ],
   company: [
-    { label: "About Us", href: "/about-us" },
-    { label: "Our Team", href: "/about-us" },
+    { label: "Our Team", href: "/our-team" },
     { label: "Pricing", href: "/pricing" },
     { label: "Case Studies", href: "/" },
     { label: "Contact", href: "#footer" },

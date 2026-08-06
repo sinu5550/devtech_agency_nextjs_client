@@ -36,9 +36,11 @@ export const StatsSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section ref={ref} className="bg-background py-16 md:py-24 border-y border-border">
+    <section
+      ref={ref}
+      className="bg-background py-16 md:py-24 border-b border-border"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        
         {/* Minimal Anthropic Grid: 4 boxy border columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-border">
           {stats.map((item, i) => (
@@ -64,7 +66,6 @@ export const StatsSection = () => {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import Footer from "../components/layout/Footer";
 import ScrollToTop from "../components/layout/ScrollToTop";
 import { ThemeProvider } from "../components/ThemeProvider";
 import FloatingContact from "@/components/shared/FloatingContact";
+import { ReactLenis } from "lenis/react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -51,18 +52,20 @@ export default function RootLayout({ children }) {
         className={`${inter.variable} ${fraunces.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
-          disableTransitionOnChange={false}
-        >
-          <ScrollToTop />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <FloatingContact />
-        </ThemeProvider>
+        <ReactLenis root options={{ lerp: 0.1, duration: 1.5 }}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem={false}
+            disableTransitionOnChange={false}
+          >
+            <ScrollToTop />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            {/* <FloatingContact /> */}
+          </ThemeProvider>
+        </ReactLenis>
       </body>
     </html>
   );

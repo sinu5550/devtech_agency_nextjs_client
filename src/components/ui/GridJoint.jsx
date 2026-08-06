@@ -20,7 +20,7 @@ export const GridJoint = ({ position = "top-left", className = "" }) => {
 
   return (
     <span
-      className={`absolute w-2.5 h-2.5 border border-muted-foreground/60 bg-background z-30 pointer-events-none select-none ${posClass} ${className}`}
+      className={`absolute w-2.5 h-2.5 border border-foreground/60 bg-background z-30 pointer-events-none select-none ${posClass} ${className}`}
     />
   );
 };

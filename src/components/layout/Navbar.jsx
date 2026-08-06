@@ -7,9 +7,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { ThemeToggle } from "../ui/ThemeToggle";
 
 const NAV_LINKS = [
-  { label: "Services", id: "services" },
-  { label: "Expertise", id: "expertise" },
-  { label: "About", id: "about" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/our-services" },
+  { label: "Our Team", href: "/our-team" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Contact", id: "footer" },
 ];
 
@@ -31,21 +32,29 @@ const Navbar = () => {
     setIsMenuOpen(false);
   }, [pathname]);
 
-  const handleScroll = (id) => {
+  const handleNavClick = (link) => {
     setIsMenuOpen(false);
-    if (pathname !== "/") {
-      router.push("/");
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }, 450);
-    } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    if (link.href) {
+      if (link.href === "/" && pathname === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        router.push(link.href);
+      }
+    } else if (link.id) {
+      if (pathname !== "/") {
+        router.push("/");
+        setTimeout(() => {
+          document
+            .getElementById(link.id)
+            ?.scrollIntoView({ behavior: "smooth" });
+        }, 450);
+      } else {
+        document
+          .getElementById(link.id)
+          ?.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
-
-  // Pages that have their own navigation
-  const hiddenRoutes = ["/about-us", "/pricing", "/our-services"];
-  if (hiddenRoutes.includes(pathname)) return null;
 
   return (
     <>
@@ -54,19 +63,25 @@ const Navbar = () => {
         className={`
           fixed top-0 left-0 right-0 z-50
           transition-all duration-300 ease-in-out
-          ${scrolled
-            ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-sm"
-            : "bg-transparent"
+          ${
+            scrolled
+              ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-sm"
+              : "bg-transparent"
           }
         `}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-0">
           <div className="flex items-center justify-between h-16 md:h-18">
-
             {/* ── Logo ── */}
             <button
-              onClick={() => handleScroll("home")}
-              className="flex-shrink-0 text-foreground font-bold text-xl tracking-tight hover:opacity-80 transition-opacity cursor-pointer"
+              onClick={() => {
+                if (pathname !== "/") {
+                  router.push("/");
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="text-xl md:text-2xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity font-mono cursor-pointer"
               aria-label="DevTech home"
             >
               DevTech<span className="text-primary">.</span>
@@ -77,27 +92,33 @@ const Navbar = () => {
               className="hidden md:flex items-center gap-1 border border-border bg-card/60 backdrop-blur-md px-1 py-1 rounded-none"
               aria-label="Main navigation"
             >
-              {NAV_LINKS.map(({ label, id }) => (
-                <button
-                  key={id}
-                  onClick={() => handleScroll(id)}
-                  className="
-                    px-4 py-1.5 text-xs font-semibold uppercase tracking-wider
-                    text-muted-foreground hover:text-foreground
-                    transition-colors duration-200 hover:bg-secondary
-                    rounded-none cursor-pointer
-                  "
-                >
-                  {label}
-                </button>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive = link.href && pathname === link.href;
+                return (
+                  <button
+                    key={link.label}
+                    onClick={() => handleNavClick(link)}
+                    className={`
+                      px-4 py-1.5 text-xs font-semibold uppercase tracking-wider
+                      transition-colors duration-200 rounded-none cursor-pointer
+                      ${
+                        isActive
+                          ? "bg-primary text-white font-bold"
+                          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                      }
+                    `}
+                  >
+                    {link.label}
+                  </button>
+                );
+              })}
             </nav>
 
             {/* ── Right actions (desktop) ── */}
             <div className="hidden md:flex items-center gap-3">
               <ThemeToggle />
               <button
-                onClick={() => handleScroll("footer")}
+                onClick={() => handleNavClick({ id: "footer" })}
                 className="
                   group flex items-center gap-2
                   px-5 py-2 text-xs font-semibold uppercase tracking-wider
@@ -112,14 +133,17 @@ const Navbar = () => {
               </button>
             </div>
 
-            {/* ── Hamburger (mobile) ── */}
-            <button
-              className="md:hidden p-2 text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors rounded-none"
-              onClick={() => setIsMenuOpen(true)}
-              aria-label="Open menu"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
+            {/* ── Mobile Actions (ThemeToggle + Hamburger) ── */}
+            <div className="flex md:hidden items-center gap-2">
+              <ThemeToggle />
+              <button
+                className="p-2 text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors rounded-none"
+                onClick={() => setIsMenuOpen(true)}
+                aria-label="Open menu"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -129,7 +153,11 @@ const Navbar = () => {
         className={`
           fixed inset-0 z-[60] bg-foreground/20 backdrop-blur-sm
           md:hidden transition-opacity duration-300
-          ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+          ${
+            isMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }
         `}
         onClick={() => setIsMenuOpen(false)}
       />
@@ -145,44 +173,47 @@ const Navbar = () => {
       >
         <div className="flex flex-col h-full p-6">
           {/* Drawer header */}
-          <div className="flex items-center justify-between mb-8 pb-4 border-b border-border">
-            <span className="font-bold text-lg text-foreground">
+          <div className="flex items-center justify-between pb-6 border-b border-border">
+            <span className="text-lg font-bold font-mono text-foreground">
               DevTech<span className="text-primary">.</span>
             </span>
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors rounded-none"
+              className="p-2 text-muted-foreground hover:text-foreground rounded-none"
               aria-label="Close menu"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Drawer nav */}
-          <nav className="flex flex-col gap-1">
-            {NAV_LINKS.map(({ label, id }) => (
-              <button
-                key={id}
-                className="
-                  text-left px-4 py-3 text-sm font-semibold uppercase tracking-wider
-                  text-muted-foreground hover:text-foreground hover:bg-secondary
-                  transition-colors duration-200 rounded-none border-b border-border/50
-                "
-                onClick={() => handleScroll(id)}
-              >
-                {label}
-              </button>
-            ))}
+          {/* Drawer links */}
+          <nav className="flex flex-col gap-2 py-6">
+            {NAV_LINKS.map((link) => {
+              const isActive = link.href && pathname === link.href;
+              return (
+                <button
+                  key={link.label}
+                  onClick={() => handleNavClick(link)}
+                  className={`
+                    w-full text-left px-4 py-3 text-sm font-semibold uppercase tracking-wider
+                    border border-transparent transition-all rounded-none
+                    ${
+                      isActive
+                        ? "bg-primary text-white font-bold"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary hover:border-border"
+                    }
+                  `}
+                >
+                  {link.label}
+                </button>
+              );
+            })}
           </nav>
 
           {/* Drawer footer */}
-          <div className="mt-auto space-y-3 pt-4 border-t border-border">
-            <div className="flex items-center justify-between px-4 py-3 bg-secondary border border-border rounded-none">
-              <span className="text-xs font-semibold text-foreground uppercase tracking-wider">Theme</span>
-              <ThemeToggle />
-            </div>
+          <div className="mt-auto pt-4 border-t border-border">
             <button
-              onClick={() => handleScroll("footer")}
+              onClick={() => handleNavClick({ id: "footer" })}
               className="
                 w-full flex items-center justify-center gap-2
                 py-3 text-xs font-semibold uppercase tracking-wider

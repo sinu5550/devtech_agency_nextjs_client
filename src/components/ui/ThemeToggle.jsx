@@ -22,11 +22,11 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="relative w-10 h-10 rounded-full bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-300 flex items-center justify-center group hover:scale-110 active:scale-95"
+      className="relative w-8 h-8 rounded-full bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-300 flex items-center justify-center group hover:scale-110 active:scale-95"
       aria-label="Toggle theme"
     >
-      <Sun className="h-5 w-5 text-yellow-400 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 absolute" />
-      <Moon className="h-5 w-5 text-blue-400 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 absolute" />
+      <Sun className="h-4 w-4 text-primary rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 absolute" />
+      <Moon className="h-4 w-4 text-primary rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 absolute" />
       <span className="sr-only">Toggle theme</span>
     </button>
   );
