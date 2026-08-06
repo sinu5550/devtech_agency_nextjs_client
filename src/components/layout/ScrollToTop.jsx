@@ -1,20 +1,17 @@
 "use client";
-
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useLenis } from "lenis/react";
 
-const ScrollToTop = () => {
+export default function ScrollToTop() {
   const pathname = usePathname();
+  const lenis = useLenis();
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  }, [pathname]);
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    }
+  }, [pathname, lenis]);
 
   return null;
-};
-
-export default ScrollToTop;
+}

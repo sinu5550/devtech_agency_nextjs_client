@@ -32,7 +32,7 @@ const FloatingIcon = ({ icon: Icon, x, y, delay, color }) => (
 
 const Hero = () => {
   return (
-    <main className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden select-none px-4">
+    <main className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden px-4">
       {/* 1. Digital Floor Pattern */}
       <div className="absolute bottom-0 left-0 right-0 h-[50vh] bg-digital-floor [transform:rotateX(60deg)_translateZ(0)] origin-bottom pointer-events-none opacity-40 z-0" />
       

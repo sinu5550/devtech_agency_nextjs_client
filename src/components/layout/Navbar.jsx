@@ -1,263 +1,236 @@
 "use client";
 
-import React, { useRef, useLayoutEffect, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { Menu, X } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePathname, useRouter } from "next/navigation";
 import { ThemeToggle } from "../ui/ThemeToggle";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/our-services" },
+  { label: "Our Team", href: "/our-team" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Contact", id: "footer" },
+];
 
 const Navbar = () => {
-  const fixedNavRef = useRef(null);
-  const logoSmallRef = useRef(null);
-  const menuItemsRef = useRef(null);
-  const extraDiv = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent hydration mismatch on mobile first
-
   const pathname = usePathname();
   const router = useRouter();
 
-  // Handle Resize for GSAP context
+  // Scroll detection for frosted glass effect
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined" || isMobile) return; // Skip animation on mobile
-    if (!fixedNavRef.current) return;
+  // Close menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
-    const ctx = gsap.context(() => {
-      // Initial state
-      if (logoSmallRef.current) {
-        gsap.set(logoSmallRef.current, { y: -50, opacity: 0 });
+  const handleNavClick = (link) => {
+    setIsMenuOpen(false);
+    if (link.href) {
+      if (link.href === "/" && pathname === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        router.push(link.href);
       }
-
-      // === FIRST ANIMATION (logo + menu shift) ===
-      const mainTL = gsap.timeline({
-        scrollTrigger: {
-          trigger: "body",
-          start: "top+=165 top",
-          end: "+=100",
-          scrub: true,
-        },
-      });
-
-      if (logoSmallRef.current) {
-        mainTL.to(logoSmallRef.current, { y: 0, opacity: 1, duration: 1 }, 0);
-      }
-      if (menuItemsRef.current) {
-        mainTL.to(menuItemsRef.current, { x: 100, duration: 1 }, 0);
-      }
-
-      // === BACKGROUND APPEARS WHEN ANIMATION STARTS ===
-      if (fixedNavRef.current) {
-        gsap.to(fixedNavRef.current, {
-          backgroundColor: "rgba(0, 0, 0, 0.4)",
-          backdropFilter: "blur(12px)",
-          borderBottomWidth: "1px",
-          scrollTrigger: {
-            trigger: "body",
-            start: "top+=180 top",
-            toggleActions: "play reverse play reverse",
-          },
-        });
-
-        gsap.to(fixedNavRef.current, {
-          scaleX: 0.9,
-          borderRadius: "14px",
-          marginTop: "24px",
-          scrollTrigger: {
-            trigger: "body",
-            start: "top+=275 top",
-            toggleActions: "play reverse play reverse",
-          },
-        });
-      }
-    }, fixedNavRef);
-
-    return () => ctx.revert();
-  }, [pathname, isMobile]);
-
-  // Scroll handler
-  const handleScroll = (id) => {
-    setIsMenuOpen(false); // Close menu on click
-    if (pathname !== "/") {
-      router.push("/");
-      setTimeout(() => {
-        const section = document.getElementById(id);
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 400);
-    } else {
-      const section = document.getElementById(id);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
+    } else if (link.id) {
+      if (pathname !== "/") {
+        router.push("/");
+        setTimeout(() => {
+          document
+            .getElementById(link.id)
+            ?.scrollIntoView({ behavior: "smooth" });
+        }, 450);
+      } else {
+        document
+          .getElementById(link.id)
+          ?.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
 
-  // Pages without this navbar
-  const hiddenRoutes = ["/about-us", "/pricing", "/our-services"];
-  const hideNavbar = hiddenRoutes.includes(pathname);
-  if (hideNavbar) return;
-
   return (
-    <div ref={extraDiv}>
-      <div
-        ref={fixedNavRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out px-4 md:px-8 w-full ${isMobile ? "bg-white/80 dark:bg-black/40 backdrop-blur-md border-b border-border shadow-lg" : ""}`}
+    <>
+      {/* ── Main Navbar ─────────────────────────────── */}
+      <header
+        className={`
+          fixed top-0 left-0 right-0 z-50
+          transition-all duration-300 ease-in-out
+          ${
+            scrolled
+              ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-sm"
+              : "bg-transparent"
+          }
+        `}
       >
-        <div className="flex justify-between items-center w-full py-4 px-2">
-          <div className="flex items-center gap-6">
-            <p
-              ref={logoSmallRef}
-              className={`font-bold text-xl md:text-2xl cursor-pointer text-foreground glow-text-blue ${isMobile ? "opacity-100 translate-y-0" : ""}`}
-              onClick={() => handleScroll("home")}
+        <div className="max-w-6xl mx-auto px-4 sm:px-0">
+          <div className="flex items-center justify-between h-16 md:h-18">
+            {/* ── Logo ── */}
+            <button
+              onClick={() => {
+                if (pathname !== "/") {
+                  router.push("/");
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="text-2xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity cursor-pointer"
+              aria-label="DevTech home"
             >
-              DevTech.
-            </p>
-            <nav
-              ref={menuItemsRef}
-              className="ml-[-100px] hidden md:flex items-center w-max py-3 px-8 bg-card/50 dark:bg-white/5 border border-border backdrop-blur-md gap-12 rounded-full font-semibold text-foreground/80"
-            >
-              <button
-                className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all"
-                onClick={() => handleScroll("services")}
-              >
-                Services
-              </button>
-              <button
-                className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all"
-                onClick={() => handleScroll("expertise")}
-              >
-                Expertise
-              </button>
-              <button
-                className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all"
-                onClick={() => handleScroll("about")}
-              >
-                About
-              </button>
-              <button
-                className="cursor-pointer hover:text-foreground hover:glow-text-blue transition-all"
-                onClick={() => handleScroll("footer")}
-              >
-                Contact
-              </button>
-            </nav>
-          </div>
+              DevTech<span className="text-primary">.</span>
+            </button>
 
-          <div className="flex items-center gap-4">
-            {/* Theme Toggle - Desktop */}
-            <div className="hidden md:block">
+
+            {/* ── Center nav items (desktop) — sharp rectangular ── */}
+            <nav
+              className="hidden md:flex items-center gap-1 border border-border bg-card/60 backdrop-blur-md px-1 py-1 rounded-none"
+              aria-label="Main navigation"
+            >
+              {NAV_LINKS.map((link) => {
+                const isActive = link.href && pathname === link.href;
+                return (
+                  <button
+                    key={link.label}
+                    onClick={() => handleNavClick(link)}
+                    className={`
+                      px-4 py-1.5 text-xs font-semibold uppercase tracking-wider
+                      transition-colors duration-200 rounded-none cursor-pointer
+                      ${
+                        isActive
+                          ? "bg-primary text-white font-bold"
+                          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                      }
+                    `}
+                  >
+                    {link.label}
+                  </button>
+                );
+              })}
+            </nav>
+
+            {/* ── Right actions (desktop) ── */}
+            <div className="hidden md:flex items-center gap-3">
               <ThemeToggle />
+              <button
+                onClick={() => handleNavClick({ id: "footer" })}
+                className="
+                  group flex items-center gap-2
+                  px-5 py-2 text-xs font-semibold uppercase tracking-wider
+                  bg-foreground text-background
+                  hover:bg-foreground/90
+                  active:scale-[0.98] transition-all duration-200
+                  rounded-none cursor-pointer
+                "
+              >
+                Get a Quote
+                <FaArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+              </button>
             </div>
 
-            <button
-              onClick={() => handleScroll("footer")}
-              className="hidden md:flex group py-3 px-6 bg-primary text-white rounded-full font-bold items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(59,130,246,0.5)] border border-primary/50"
-            >
-              Get a Quote
-              <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
-              onClick={() => setIsMenuOpen(true)}
-            >
-              <Menu className="w-8 h-8" />
-            </button>
+            {/* ── Mobile Actions (ThemeToggle + Hamburger) ── */}
+            <div className="flex md:hidden items-center gap-2">
+              <ThemeToggle />
+              <button
+                className="p-2 text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors rounded-none"
+                onClick={() => setIsMenuOpen(true)}
+                aria-label="Open menu"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile Side Menu Overlay */}
+      {/* ── Mobile overlay ────────────────────────────── */}
       <div
-        className={`fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        className={`
+          fixed inset-0 z-60 bg-foreground/20 backdrop-blur-sm
+          md:hidden transition-opacity duration-300
+          ${
+            isMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }
+        `}
         onClick={() => setIsMenuOpen(false)}
       />
 
-      {/* Side Menu Panel */}
+      {/* ── Mobile side drawer — boxy ── */}
       <div
-        className={`fixed top-0 right-0 bottom-0 z-[70] w-[80%] max-w-sm bg-background border-l border-border shadow-2xl transition-transform duration-300 md:hidden ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+        className={`
+          fixed top-0 right-0 bottom-0 z-70 w-[80%] max-w-xs
+          bg-background border-l border-border shadow-2xl
+          md:hidden transition-transform duration-300 ease-in-out rounded-none
+          ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
+        `}
       >
         <div className="flex flex-col h-full p-6">
-          <div className="flex justify-between items-center mb-10">
-            <span className="font-bold text-xl text-foreground glow-text-blue">
-              Menu
+          {/* Drawer header */}
+          <div className="flex items-center justify-between pb-6 border-b border-border">
+            <span className="text-2xl font-bold tracking-tight text-foreground">
+              DevTech<span className="text-primary">.</span>
             </span>
+
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="p-2 text-muted-foreground hover:text-foreground"
+              className="p-2 text-muted-foreground hover:text-foreground rounded-none"
+              aria-label="Close menu"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
           </div>
 
-          <nav className="flex flex-col gap-6 text-lg font-bold">
-            <button
-              className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border"
-              onClick={() => handleScroll("home")}
-            >
-              Home
-            </button>
-            <button
-              className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border"
-              onClick={() => handleScroll("services")}
-            >
-              Services
-            </button>
-            <button
-              className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border"
-              onClick={() => handleScroll("expertise")}
-            >
-              Expertise
-            </button>
-            <button
-              className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border"
-              onClick={() => handleScroll("about")}
-            >
-              About
-            </button>
-            <button
-              className="text-left text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border"
-              onClick={() => handleScroll("footer")}
-            >
-              Contact
-            </button>
+          {/* Drawer links */}
+          <nav className="flex flex-col gap-2 py-6">
+            {NAV_LINKS.map((link) => {
+              const isActive = link.href && pathname === link.href;
+              return (
+                <button
+                  key={link.label}
+                  onClick={() => handleNavClick(link)}
+                  className={`
+                    w-full text-left px-4 py-3 text-sm font-semibold uppercase tracking-wider
+                    border border-transparent transition-all rounded-none
+                    ${
+                      isActive
+                        ? "bg-primary text-white font-bold"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary hover:border-border"
+                    }
+                  `}
+                >
+                  {link.label}
+                </button>
+              );
+            })}
           </nav>
 
-          <div className="mt-auto space-y-4">
-            {/* Theme Toggle - Mobile */}
-            <div className="flex items-center justify-between py-3 px-4 bg-secondary/50 rounded-xl border border-border">
-              <span className="text-sm font-semibold text-foreground">
-                Theme
-              </span>
-              <ThemeToggle />
-            </div>
-
+          {/* Drawer footer */}
+          <div className="mt-auto pt-4 border-t border-border">
             <button
-              onClick={() => handleScroll("footer")}
-              className="w-full py-4 bg-primary text-white rounded-xl font-bold flex justify-center items-center gap-2 shadow-[0_0_20px_rgba(59,130,246,0.3)] border border-primary/50 active:scale-95 transition-transform"
+              onClick={() => handleNavClick({ id: "footer" })}
+              className="
+                w-full flex items-center justify-center gap-2
+                py-3 text-xs font-semibold uppercase tracking-wider
+                bg-foreground text-background
+                hover:bg-foreground/90 active:scale-[0.98]
+                transition-all duration-200 rounded-none
+              "
             >
               Get a Quote
-              <FaArrowRight />
+              <FaArrowRight className="w-3 h-3" />
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

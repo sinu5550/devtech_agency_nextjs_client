@@ -34,7 +34,7 @@ const techLogos = [
 
 const LogoTicker = () => {
   return (
-    <div className="relative py-16 overflow-hidden select-none">
+    <div className="relative py-16 overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[120px] bg-primary/10 blur-[100px] pointer-events-none" />
       
