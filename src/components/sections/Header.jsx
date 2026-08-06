@@ -74,7 +74,7 @@ const Header = () => {
         <div className="h-[90px]"></div>
         <h1
           ref={logoRef}
-          className="logo-main font-bold tracking-wider text-[80px] md:text-[200px] hidden md:flex justify-center mt-12 mb-12 relative z-10 select-none pointer-events-none text-foreground glow-text-blue"
+          className="logo-main font-black tracking-tighter text-[80px] md:text-[200px] hidden md:flex justify-center mt-12 mb-12 relative z-10 select-none pointer-events-none text-foreground glow-text-blue"
         >
           DevTech.
         </h1>

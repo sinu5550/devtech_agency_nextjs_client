@@ -38,7 +38,10 @@ const Navbar = () => {
     const ctx = gsap.context(() => {
       // Initial state
       if (logoSmallRef.current) {
-        gsap.set(logoSmallRef.current, { y: -50, opacity: 0 });
+        gsap.set(logoSmallRef.current, {
+          y: -50,
+          opacity: 0,
+        });
       }
 
       // === FIRST ANIMATION (logo + menu shift) ===
@@ -72,7 +75,8 @@ const Navbar = () => {
         });
 
         gsap.to(fixedNavRef.current, {
-          scaleX: 0.9,
+          // scaleX: 0.9,
+          width: "90%",
           borderRadius: "14px",
           marginTop: "24px",
           scrollTrigger: {
@@ -115,7 +119,7 @@ const Navbar = () => {
     <div ref={extraDiv}>
       <div
         ref={fixedNavRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out px-4 md:px-8 w-full ${isMobile ? "bg-white/80 dark:bg-black/40 backdrop-blur-md border-b border-border shadow-lg" : ""}`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out px-4 md:px-8 w-full mx-auto ${isMobile ? "bg-white/80 dark:bg-black/40 backdrop-blur-md border-b border-border shadow-lg " : ""}`}
       >
         <div className="flex justify-between items-center w-full py-4 px-2">
           <div className="flex items-center gap-6">

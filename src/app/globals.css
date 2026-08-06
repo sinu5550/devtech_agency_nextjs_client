@@ -6,7 +6,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-roboto);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -49,22 +48,22 @@
 :root {
   --radius: 0.75rem;
   /* Light Theme - Inspired by deepchainlabs.com */
-  --background: oklch(0.985 0.002 264);    /* Soft off-white #F8F9FA */
-  --foreground: oklch(0.25 0.015 264);     /* Dark slate gray */
-  --card: oklch(0.99 0.001 264);           /* Almost white cards */
+  --background: oklch(0.985 0.002 264); /* Soft off-white #F8F9FA */
+  --foreground: oklch(0.25 0.015 264); /* Dark slate gray */
+  --card: oklch(0.99 0.001 264); /* Almost white cards */
   --card-foreground: oklch(0.25 0.015 264);
   --popover: oklch(0.99 0.001 264);
   --popover-foreground: oklch(0.25 0.015 264);
-  --primary: oklch(0.58 0.23 250);         /* Electric Blue */
-  --primary-foreground: oklch(1 0 0);      /* Pure white */
-  --secondary: oklch(0.96 0.003 264);      /* Very light gray */
+  --primary: oklch(0.58 0.23 250); /* Electric Blue */
+  --primary-foreground: oklch(1 0 0); /* Pure white */
+  --secondary: oklch(0.96 0.003 264); /* Very light gray */
   --secondary-foreground: oklch(0.25 0.015 264);
-  --muted: oklch(0.97 0.002 264);          /* Subtle gray */
+  --muted: oklch(0.97 0.002 264); /* Subtle gray */
   --muted-foreground: oklch(0.52 0.012 264); /* Medium gray */
   --accent: oklch(0.96 0.003 264);
   --accent-foreground: oklch(0.25 0.015 264);
   --destructive: oklch(0.58 0.25 27);
-  --border: oklch(0.92 0.003 264);         /* Light gray border */
+  --border: oklch(0.92 0.003 264); /* Light gray border */
   --input: oklch(0.92 0.003 264);
   --ring: oklch(0.58 0.23 250);
   --chart-1: oklch(0.65 0.22 41);
@@ -121,17 +120,26 @@
   * {
     @apply border-border outline-ring/50;
   }
-  html, body {
+  html,
+  body {
     @apply overflow-x-clip;
   }
   body {
     @apply bg-background text-foreground font-sans select-none cursor-default;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
-  button, a, input, textarea, [contenteditable="true"] {
+  button,
+  a,
+  input,
+  textarea,
+  [contenteditable="true"] {
     @apply cursor-auto; /* Reset for interactive elements */
   }
-  button, a, .cursor-pointer {
+  button,
+  a,
+  .cursor-pointer {
     @apply cursor-pointer;
   }
 }
@@ -145,7 +153,7 @@
   .glow-blue {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
   }
-  
+
   .dark .glow-blue {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
   }
@@ -153,7 +161,7 @@
   .glow-text-blue {
     text-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
   }
-  
+
   /* Remove text glow in light mode for better readability */
   :root .glow-text-blue {
     text-shadow: none;
@@ -163,17 +171,17 @@
   .glass-dark {
     @apply backdrop-blur-2xl border;
   }
-  
+
   .dark .glass-dark {
     @apply bg-white/5 border-white/10;
   }
-  
+
   :root .glass-dark {
     @apply bg-black/5 border-black/10;
   }
 
   .bg-digital-floor {
-    background-image: 
+    background-image:
       linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
     background-size: 50px 50px;
@@ -183,14 +191,17 @@
   .perspective-1000 {
     perspective: 1000px;
   }
-  
+
   /* Theme-aware card shadows */
   .card-shadow {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
-  
+
   .dark .card-shadow {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.3),
+      0 2px 4px -1px rgba(0, 0, 0, 0.2);
   }
 }
-
