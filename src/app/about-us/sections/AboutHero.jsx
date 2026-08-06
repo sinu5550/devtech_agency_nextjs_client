@@ -33,9 +33,11 @@ export default function AboutHero() {
 
   return (
     <div className="min-h-screen bg-background text-foreground py-8 px-4 md:px-8 font-sans transition-colors duration-300 relative overflow-hidden flex flex-col justify-center">
-      {/* Background Ambient Glows */}
-      <div className="absolute top-10 left-1/4 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10" />
-      <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -z-10" />
+      {/* Background dot grid */}
+      <div className="absolute inset-0 bg-dot-grid opacity-50 pointer-events-none" />
+      {/* Ambient Glows */}
+      <div className="absolute top-10 left-1/4 w-[400px] h-[400px] rounded-full blur-[120px] pointer-events-none -z-10" style={{background: 'radial-gradient(circle, oklch(0.56 0.22 264 / 0.08) 0%, transparent 70%)'}} />
+      <div className="absolute bottom-10 right-10 w-[300px] h-[300px] rounded-full blur-[100px] pointer-events-none -z-10" style={{background: 'radial-gradient(circle, oklch(0.72 0.18 54 / 0.06) 0%, transparent 70%)'}} />
 
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
@@ -67,7 +69,7 @@ export default function AboutHero() {
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.45, ease: "easeOut" }}
-                className="relative p-6 md:p-8 rounded-3xl bg-background/40 backdrop-blur-2xl border border-border/50 shadow-2xl shadow-primary/5 space-y-8 overflow-hidden"
+                className="relative p-6 md:p-8 rounded-3xl bg-card border border-border shadow-sm card-shadow space-y-8 overflow-hidden"
               >
                 {/* Background Subtle Radial Glow */}
                 <div className="absolute -top-24 -right-24 w-60 h-60 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
@@ -247,7 +249,7 @@ export default function AboutHero() {
                     <div
                       className={`mx-auto relative group max-h-45 md:max-h-125 rounded-2xl overflow-hidden border-2 transition-all duration-500 ${
                         isActive
-                          ? "border-primary glow-blue shadow-[0_0_25px_rgba(59,130,246,0.5)] scale-[1.02] z-10"
+                          ? "border-primary shadow-[0_0_20px_oklch(0.56_0.22_264/0.2)] scale-[1.02] z-10"
                           : "border-transparent grayscale opacity-50 hover:grayscale-0 hover:opacity-100 hover:border-border"
                       }`}
                     >
