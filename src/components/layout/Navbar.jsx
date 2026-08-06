@@ -81,11 +81,12 @@ const Navbar = () => {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="text-xl md:text-2xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity font-mono cursor-pointer"
+              className="text-2xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity cursor-pointer"
               aria-label="DevTech home"
             >
               DevTech<span className="text-primary">.</span>
             </button>
+
 
             {/* ── Center nav items (desktop) — sharp rectangular ── */}
             <nav
@@ -151,7 +152,7 @@ const Navbar = () => {
       {/* ── Mobile overlay ────────────────────────────── */}
       <div
         className={`
-          fixed inset-0 z-[60] bg-foreground/20 backdrop-blur-sm
+          fixed inset-0 z-60 bg-foreground/20 backdrop-blur-sm
           md:hidden transition-opacity duration-300
           ${
             isMenuOpen
@@ -165,7 +166,7 @@ const Navbar = () => {
       {/* ── Mobile side drawer — boxy ── */}
       <div
         className={`
-          fixed top-0 right-0 bottom-0 z-[70] w-[80%] max-w-xs
+          fixed top-0 right-0 bottom-0 z-70 w-[80%] max-w-xs
           bg-background border-l border-border shadow-2xl
           md:hidden transition-transform duration-300 ease-in-out rounded-none
           ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
@@ -174,9 +175,10 @@ const Navbar = () => {
         <div className="flex flex-col h-full p-6">
           {/* Drawer header */}
           <div className="flex items-center justify-between pb-6 border-b border-border">
-            <span className="text-lg font-bold font-mono text-foreground">
+            <span className="text-2xl font-bold tracking-tight text-foreground">
               DevTech<span className="text-primary">.</span>
             </span>
+
             <button
               onClick={() => setIsMenuOpen(false)}
               className="p-2 text-muted-foreground hover:text-foreground rounded-none"
