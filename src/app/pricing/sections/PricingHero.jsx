@@ -1,27 +1,17 @@
 "use client";
 import React from "react";
-
+import SectionTitle from "@/components/shared/SectionTitle";
 
 export default function PricingHero({ isYearly, setIsYearly }) {
   return (
-    <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-      {/* Mono Section Tag */}
-      <span className="font-mono text-xs font-bold text-primary uppercase tracking-[0.2em] block mb-4">
-        [ TRANSPARENT PRICING ]
-      </span>
-
-
-      {/* Main Title */}
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground mb-4">
-        Simple Plans for{" "}
-        <span className="text-primary underline decoration-primary/40 underline-offset-8">Every Scale</span>
-      </h1>
-
-      {/* Subtitle */}
-      <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto font-normal">
-        Choose the perfect plan tailored for your web development needs.
-        Self-designed, high performance, and zero hidden fees.
-      </p>
+    <div className="flex flex-col items-center mb-16 md:mb-20">
+      <SectionTitle
+        tag="TRANSPARENT PRICING"
+        title="Simple Plans for Every"
+        highlightTitle="Scale."
+        subtitle="Choose the perfect plan tailored for your web development needs. Self-designed, high performance, and zero hidden fees."
+        className="mb-8"
+      />
 
       {/* Billing Toggle Switch */}
       <div className="inline-flex items-center gap-2 p-1.5 border border-border bg-card shadow-sm">
@@ -54,9 +44,7 @@ export default function PricingHero({ isYearly, setIsYearly }) {
             SAVE 20%
           </span>
         </button>
-
       </div>
     </div>
   );
 }
-

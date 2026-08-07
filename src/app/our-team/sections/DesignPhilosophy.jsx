@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Layers, CloudLightning } from "lucide-react";
 import { GridJoint } from "@/components/ui/GridJoint";
+import SectionTitle from "@/components/shared/SectionTitle";
 
 const philosophies = [
   {
@@ -43,24 +44,20 @@ export default function DesignPhilosophy() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Left Sticky Header */}
-          <div className="lg:col-span-4 space-y-5 lg:sticky lg:top-28">
-            <span className="font-mono text-xs font-bold text-orange-500 uppercase tracking-[0.25em] block">
-              [ OUR CORE MINDSET ]
-            </span>
-
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
-              Beyond Just <br className="hidden sm:inline" />
-              <span className="text-orange-500">Code.</span>
-            </h2>
-
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-normal">
-              Our philosophy is simple: Architect digital experiences that are
-              visually striking on the outside and structurally unbreakable on
-              the inside.
-            </p>
+          <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-4">
+            <SectionTitle
+              tag="OUR CORE MINDSET"
+              title="Beyond Just"
+              highlightTitle="Code."
+              subtitle="Our philosophy is simple: Architect digital experiences that are visually striking on the outside and structurally unbreakable on the inside."
+              align="left"
+              className="mb-0"
+              lgTitleSize="text-5xl"
+            />
 
             <div className="pt-3 border-t border-dashed border-border font-mono text-xs text-muted-foreground">
-              // Engineering scalable solutions built strictly for modern industrial standards.
+              // Engineering scalable solutions built strictly for modern
+              industrial standards.
             </div>
           </div>
 
