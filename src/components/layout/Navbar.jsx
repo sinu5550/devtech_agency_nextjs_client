@@ -5,6 +5,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { Menu, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { ThemeToggle } from "../ui/ThemeToggle";
+import Logo from "../shared/Logo";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -73,19 +74,7 @@ const Navbar = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-0">
           <div className="flex items-center justify-between h-16 md:h-18">
             {/* ── Logo ── */}
-            <button
-              onClick={() => {
-                if (pathname !== "/") {
-                  router.push("/");
-                } else {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }
-              }}
-              className="text-2xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity cursor-pointer"
-              aria-label="DevTech home"
-            >
-              DevTech<span className="text-primary">.</span>
-            </button>
+            <Logo />
 
             {/* ── Center nav items (desktop) — sharp rectangular ── */}
             <nav

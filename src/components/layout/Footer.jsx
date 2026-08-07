@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaTwitter, FaFacebook } from "react-icons/fa6";
 import { Mail, MapPin } from "lucide-react";
+import Logo from "../shared/Logo";
 
 const footerLinks = {
   services: [
@@ -29,19 +30,19 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer id="footer" className="bg-background border-t border-border select-none">
+    <footer
+      id="footer"
+      className="bg-background border-t border-border select-none"
+    >
       <div className="max-w-6xl mx-auto px-4 py-16 md:py-20">
         {/* Main grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-border">
           {/* Col 1 — Brand */}
           <div className="sm:col-span-2 lg:col-span-1 space-y-4">
-            <Link href="/" className="inline-block">
-              <span className="text-2xl font-bold font-mono text-foreground tracking-tight">
-                DevTech<span className="text-orange-500">.</span>
-              </span>
-            </Link>
+            <Logo />
             <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Engineering digital products with precision and scale. Your trusted partner for web, mobile, and cloud solutions.
+              Engineering digital products with precision and scale. Your
+              trusted partner for web, mobile, and cloud solutions.
             </p>
 
             {/* System status tag — boxy rounded-none */}
@@ -100,7 +101,10 @@ const Footer = () => {
             <ul className="space-y-2.5 mb-6 font-mono text-xs text-muted-foreground">
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-orange-500 shrink-0" />
-                <a href="mailto:hello@devtech.agency" className="hover:text-foreground transition-colors">
+                <a
+                  href="mailto:hello@devtech.agency"
+                  className="hover:text-foreground transition-colors"
+                >
                   hello@devtech.agency
                 </a>
               </li>
@@ -131,7 +135,8 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 font-mono text-xs text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} DevTech Agency. All rights reserved.
+            &copy; {new Date().getFullYear()} DevTech Agency. All rights
+            reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link href="#" className="hover:text-foreground transition-colors">
