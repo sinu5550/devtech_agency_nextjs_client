@@ -50,7 +50,7 @@ export default function SectionTitle({
     >
       {/* ── Top Monospaced Tag / Badge ── */}
       {tag && (
-        <span className="font-mono text-xs font-bold text-orange-500 uppercase tracking-[0.25em] block mb-3">
+        <span className="font-mono text-xs font-bold text-primary uppercase tracking-[0.25em] block mb-3">
           [ {tag.replace(/^\[?\s*|\s*\]?$/g, "")} ]
         </span>
       )}
@@ -71,11 +71,11 @@ export default function SectionTitle({
             >
               {title}{" "}
               {highlightTitle && (
-                <span className="relative inline-block text-orange-500 pb-2 sm:pb-3">
+                <span className="relative inline-block text-primary pb-2 sm:pb-3">
                   {highlightTitle}
                   {/* Full Word Width Tapered Curve SVG (Responsive height & weight for sm/md) */}
                   <motion.svg
-                    className="absolute -bottom-1 left-0 w-full h-3.5 md:h-4 lg:h-6 overflow-visible text-orange-500 pointer-events-none -rotate-1"
+                    className="absolute -bottom-1 left-0 w-full h-3.5 md:h-4 lg:h-6 overflow-visible text-primary pointer-events-none -rotate-1"
                     viewBox="0 0 100 24"
                     preserveAspectRatio="none"
                     fill="none"
