@@ -2,18 +2,10 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { teamData } from "@/data/teamData";
-import {
-  Github,
-  Linkedin,
-  Globe,
-  GraduationCap,
-  BookOpen,
-  Award,
-  ArrowUpRight,
-} from "lucide-react";
-import { GridJoint } from "@/components/ui/GridJoint";
+import { Github, Linkedin, Globe, GraduationCap } from "lucide-react";
+import SectionTitle from "@/components/shared/SectionTitle";
 
-export default function AboutHero() {
+export default function TeamHero() {
   const [activeMemberId, setActiveMemberId] = useState(teamData[0]?.id);
 
   // Auto-switch Active Member every 6 seconds
@@ -44,18 +36,13 @@ export default function AboutHero() {
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-10 md:mb-14">
-          <span className="font-mono text-xs font-bold text-orange-500 uppercase tracking-[0.25em] block mb-3">
-            [ MEET THE MASTERMINDS ]
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-foreground leading-tight">
-            DevTech <span className="text-orange-500">Team</span>
-          </h1>
-          <p className="text-muted-foreground mt-2 text-xs sm:text-sm md:text-base max-w-lg mx-auto">
-            Click any member or sit back to watch our core engineering team in
-            action.
-          </p>
-        </div>
+        <SectionTitle
+          tag="MEET THE MASTERMINDS"
+          title="DevTech"
+          highlightTitle="Team."
+          subtitle="Click any member or sit back to watch our core engineering team in action."
+          className="mb-10 md:mb-14"
+        />
 
         {/* Main Split Layout */}
         <div className="flex flex-col-reverse lg:flex-row w-full gap-8 items-stretch justify-center">

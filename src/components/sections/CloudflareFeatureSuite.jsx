@@ -167,14 +167,20 @@ export default function CloudflareFeatureSuite() {
                     `}
                   >
                     <div className="flex items-center justify-between">
-                      <span className={`font-mono text-xs font-bold ${isActive ? "text-orange-200" : "text-foreground"}`}>
+                      <span
+                        className={`font-mono text-xs font-bold ${isActive ? "text-orange-200" : "text-foreground"}`}
+                      >
                         {pillar.id}
                       </span>
-                      <span className={`font-mono text-xs ${isActive ? "text-white/80" : "text-muted-foreground"}`}>
+                      <span
+                        className={`font-mono text-xs ${isActive ? "text-white/80" : "text-muted-foreground"}`}
+                      >
                         {pillar.metric}
                       </span>
                     </div>
-                    <h3 className={`text-base font-bold tracking-tight mt-1 ${isActive ? "text-white" : "text-foreground"}`}>
+                    <h3
+                      className={`text-base font-bold tracking-tight mt-1 ${isActive ? "text-white" : "text-foreground"}`}
+                    >
                       {pillar.title}
                     </h3>
                   </button>

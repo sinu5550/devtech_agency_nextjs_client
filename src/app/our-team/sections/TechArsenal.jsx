@@ -9,6 +9,7 @@ import {
   Wrench,
   Palette,
 } from "lucide-react";
+import SectionTitle from "@/components/shared/SectionTitle";
 import { GridJoint } from "@/components/ui/GridJoint";
 
 const techCategories = [
@@ -34,7 +35,12 @@ const techCategories = [
     title: "Security & Auth",
     index: "04",
     icon: <ShieldCheck className="text-orange-500 w-5 h-5" />,
-    skills: ["NextAuth (Auth.js)", "JWT Security", "RBAC Access Control", "OWASP"],
+    skills: [
+      "NextAuth (Auth.js)",
+      "JWT Security",
+      "RBAC Access Control",
+      "OWASP",
+    ],
   },
   {
     title: "DevOps & Cloud",
@@ -55,21 +61,14 @@ export default function TechArsenal() {
     <section className="py-20 md:py-28 bg-background text-foreground transition-colors duration-300 relative overflow-hidden">
       {/* Container */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-
         {/* Section Header */}
-        <div className="text-center max-w-xl mx-auto mb-12 sm:mb-16">
-          <span className="font-mono text-xs font-bold text-orange-500 uppercase tracking-[0.25em] block mb-3">
-            [ CAPABILITIES &amp; TECH STACK ]
-          </span>
-
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-tight">
-            Tech <span className="text-orange-500">Arsenal</span>
-          </h2>
-
-          <p className="text-xs sm:text-sm text-muted-foreground mt-3 leading-relaxed">
-            The modern frameworks, languages, and industrial tools powering our high-performance applications.
-          </p>
-        </div>
+        <SectionTitle
+          tag="CAPABILITIES & TECH STACK"
+          title="Tech"
+          highlightTitle="Arsenal."
+          subtitle="The modern frameworks, languages, and industrial tools powering our high-performance applications."
+          className="mb-12 sm:mb-16"
+        />
 
         {/* Tech Grid (Sharp Boxy Rectangular Cards) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

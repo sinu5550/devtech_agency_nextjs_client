@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Monitor, Sparkles, TrendingUp, Code2, Settings, ArrowUpRight } from "lucide-react";
+import {
+  Monitor,
+  Sparkles,
+  TrendingUp,
+  Code2,
+  Settings,
+  ArrowUpRight,
+} from "lucide-react";
 
 const services = [
   {
@@ -62,7 +69,12 @@ const services = [
     quote:
       "Keeping your digital systems secure, updated, and performing at peak capacity so you can focus entirely on growth.",
     icon: Settings,
-    tags: ["24/7 Monitoring", "Security Audits", "Database Backups", "SLA Support"],
+    tags: [
+      "24/7 Monitoring",
+      "Security Audits",
+      "Database Backups",
+      "SLA Support",
+    ],
     color: "bg-emerald-700 text-white",
   },
 ];
@@ -72,7 +84,10 @@ const ServiceLayout = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="services" className="bg-background py-20 md:py-28 px-4 border-b border-border">
+    <section
+      id="services"
+      className="bg-background py-20 md:py-28 px-4 border-b border-border"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -161,7 +176,9 @@ const ServiceLayout = () => {
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          document.getElementById("footer")?.scrollIntoView({ behavior: "smooth" });
+                          document
+                            .getElementById("footer")
+                            ?.scrollIntoView({ behavior: "smooth" });
                         }}
                         className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white hover:underline underline-offset-4"
                       >
@@ -234,7 +251,10 @@ const ServiceLayout = () => {
                     </p>
                     <div className="flex flex-wrap gap-1.5 pt-2">
                       {item.tags.map((tag) => (
-                        <span key={tag} className="text-[10px] font-mono border border-white/20 px-2 py-0.5 bg-white/10">
+                        <span
+                          key={tag}
+                          className="text-[10px] font-mono border border-white/20 px-2 py-0.5 bg-white/10"
+                        >
                           {tag}
                         </span>
                       ))}
@@ -245,7 +265,6 @@ const ServiceLayout = () => {
             );
           })}
         </div>
-
       </div>
     </section>
   );

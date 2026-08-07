@@ -1,5 +1,5 @@
 import React from "react";
-import AboutHero from "./sections/AboutHero";
+import TeamHero from "./sections/TeamHero";
 import DesignPhilosophy from "./sections/DesignPhilosophy";
 import TechArsenal from "./sections/TechArsenal";
 
@@ -12,7 +12,7 @@ export const metadata = {
 export default function TeamPage() {
   return (
     <main className="mt-20 min-h-screen bg-background text-foreground flex flex-col w-full overflow-hidden">
-      <AboutHero />
+      <TeamHero />
       <DesignPhilosophy />
       <TechArsenal />
     </main>
