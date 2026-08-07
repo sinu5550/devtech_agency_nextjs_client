@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { faqList } from "@/data/pricingData";
 import { ChevronDown } from "lucide-react";
 import { GridJoint } from "@/components/ui/GridJoint";
+import SectionTitle from "@/components/shared/SectionTitle";
 
 export default function PricingFAQ() {
   const [openFaq, setOpenFaq] = useState(null);
@@ -30,24 +31,13 @@ export default function PricingFAQ() {
 
 
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <span className="font-mono text-xs font-bold text-primary uppercase tracking-[0.2em] block mb-4">
-            [ FREQUENTLY ASKED ]
-          </span>
-
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-3">
-            Got Questions?{" "}
-            <span className="text-primary underline decoration-primary/40 underline-offset-8">
-              We've Got Answers.
-            </span>
-          </h2>
-
-          <p className="text-muted-foreground text-xs sm:text-sm md:text-base max-w-lg mx-auto leading-relaxed font-normal">
-            Everything you need to know about our web development process,
-            pricing, and post-launch support.
-          </p>
-        </div>
+        <SectionTitle
+          tag="FREQUENTLY ASKED"
+          title="Got Questions? We've Got"
+          highlightTitle="Answers."
+          subtitle="Everything you need to know about our web development process, pricing, and post-launch support."
+          className="mb-12"
+        />
 
         {/* Dynamic Accordion List */}
         <div className="space-y-3 max-w-4xl mx-auto">

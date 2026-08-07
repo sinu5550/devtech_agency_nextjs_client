@@ -10,6 +10,7 @@ import ToolSection from "../components/sections/ToolSection";
 import Testimonials from "../components/sections/Testimonials";
 import CTABanner from "../components/sections/CTABanner";
 import About from "../components/sections/About";
+import EarthCanvas from "@/components/sections/TechWorld";
 
 export const metadata = {
   title: "DevTech Agency — Engineering Digital Products with Precision & Scale",
@@ -30,6 +31,8 @@ export default function Home() {
 
       {/* Cloudflare Style Features (Why Choose + Tailored To Your Team) */}
       <CloudflareFeatureSuite />
+
+      <EarthCanvas />
 
       {/* Services — Bento Grid */}
       <ServiceLayout />

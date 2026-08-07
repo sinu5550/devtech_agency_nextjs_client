@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import SectionTitle from "@/components/shared/SectionTitle";
 
 // Import local images from public folder
 import reactImg from "../../../public/assets/tools/react.png";
@@ -119,17 +120,13 @@ const ToolSection = () => {
 
           {/* ── CENTER CONTENT (HashiCorp Style) ── */}
           <div className="text-center py-6 px-4">
-            <span className="font-mono text-xs font-bold text-primary uppercase tracking-[0.25em] block mb-4">
-              [ TECH ECOSYSTEM &amp; STACK ]
-            </span>
-            
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mb-6">
-              Built to work with your ecosystem
-            </h2>
-
-            <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-lg mx-auto mb-8">
-              We leverage production-proven frameworks, databases, and modern cloud architecture tools that integrate seamlessly with your existing infrastructure.
-            </p>
+            <SectionTitle
+              tag="TECH ECOSYSTEM & STACK"
+              title="Built to work with your"
+              highlightTitle="ecosystem"
+              subtitle="We leverage production-proven frameworks, databases, and modern cloud architecture tools that integrate seamlessly with your existing infrastructure."
+              className="mb-8"
+            />
 
             {/* Metrics Counter Strip */}
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-dashed border-border font-mono text-center">
