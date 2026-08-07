@@ -87,7 +87,6 @@ const Navbar = () => {
               DevTech<span className="text-primary">.</span>
             </button>
 
-
             {/* ── Center nav items (desktop) — sharp rectangular ── */}
             <nav
               className="hidden md:flex items-center gap-1 border border-border bg-card/60 backdrop-blur-md px-1 py-1 rounded-none"
